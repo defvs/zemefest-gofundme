@@ -25,7 +25,7 @@ async function getLastN(campaignName, limit, type) {
 }
 
 function displayComments(comments) {
-    const listGroup = document.querySelector('.list-group');
+    const listGroup = document.querySelector('#list-group');
     listGroup.innerHTML = '';
 
     comments.forEach(commentData => {
@@ -34,12 +34,12 @@ function displayComments(comments) {
         const comment = commentData.comment.comment;
 
         const listItem = document.createElement('li');
-        listItem.classList.add('list-group-item');
+        listItem.classList.add('card');
 
         listItem.innerHTML = `
-      <strong class="comment-name-tag">Name:</strong> <span class="comment-name">${name}</span><br>
-      <strong class="comment-amount-tag">Donation Amount:</strong> <span class="comment-amount">$${donationAmount}</span><br>
-      <strong class="comment-comment-tag">Comment:</strong> <span class="comment-comment"></span>${comment}
+        <div class="card-body">
+      <span class="badge text-bg-secondary comment-amount">$${donationAmount}</span> <b class="comment-name">${name}</b><br>
+      <span class="comment-comment">${comment}</span></div>
     `;
 
         listGroup.appendChild(listItem);
@@ -48,7 +48,7 @@ function displayComments(comments) {
 
 
 function displayDonations(donations) {
-    const listGroup = document.querySelector('.list-group');
+    const listGroup = document.querySelector('#list-group');
     listGroup.innerHTML = '';
 
     donations.forEach(commentData => {
@@ -56,11 +56,11 @@ function displayDonations(donations) {
         const donationAmount = commentData.amount;
 
         const listItem = document.createElement('li');
-        listItem.classList.add('list-group-item');
+        listItem.classList.add('card');
 
         listItem.innerHTML = `
-      <strong class="donation-name-tag">Name:</strong> <span class="donation-name">${name}</span><br>
-      <strong class="donation-amount-tag">Donation Amount:</strong> <span class="donation-amount">$${donationAmount}</span>
+        <div class="card-body">
+      <span class="badge text-bg-secondary comment-amount">$${donationAmount}</span> <b class="comment-name">${name}</b></div>
     `;
 
         listGroup.appendChild(listItem);
